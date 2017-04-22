@@ -1,0 +1,34 @@
+README
+=======================
+
+NOTE : the program builds of the main.cpp in the 'loop subdivision' repository
+
+The program implements Phong color shading the closed triangle mesh. The user is able to rotate and 
+translate the object. The light source is hardcoded to be positioned at the top-right corner 
+of the window. The rendering will take time due to the color ray tracer and the shadow ray tracer 
+shooting through an 800x800 pixel window.
+
+The following key presses are used in the program:
+
+The 'W/w A/a S/s D/d' keys control specific movements.
+
+Press the 'R/r' key to enter 'Rotate Mode'.
+Press the 'T/t' key to enter 'Translate Mode'.
+
+Press the 'L/l' key to subdivide the mesh. For debugging and general 
+reasons, the maximum subdivision level is three subdivisions. Anything
+above the third refinement stage, reverts to the original mesh.
+
+Press the 'I/i' key to render the mesh using Phong Model Shading.
+Sometimes the shadow casting portion works beautifully by showing the
+shape and depth of the mesh.
+
+Optimizations: Instead of checking if the ray hits the mesh at EVERY 
+pixel, I calculated a bounding box based on the min/max value of both 
+the width and height (based on which view). The rest of the pixels are
+dedicated to shadow casting calculations.
+
+Smooth Shading: I was able to get smooth shading to work. I 
+calculated all the averaged normals on every vertex, then
+interpolated through the triangle for any point by using the barycentric
+coordinates.
